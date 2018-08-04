@@ -4,7 +4,8 @@
 #temp dir 
 .bin
 # wordpress setup ( also autoGen ) 
-.conf/wp_conf/wordpress_src/wordPress/
+.conf/wp_conf/wordpress_src/wordPress
+.conf/wp_conf/wordpress_src/wordpress
 #autoGen by vagrant
 .vagrant
 
