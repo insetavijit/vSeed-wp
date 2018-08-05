@@ -12,7 +12,14 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "hashicorp/precise32"
+  config.vm.box = "ubuntu/trusty64" # vb img file (iso / main box )
+   # (name of the box )
+  config.vm.define "vSeed-wp"
+  #( provider )
+  config.vm.provider :virtualbox do |vb| 
+    # (name ein provider )
+    vb.name = "vSeed-wp" 
+  end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -47,6 +54,9 @@ Vagrant.configure("2") do |config|
 
   #this is the nginx config dir ( so you can do some advance stuff )
   config.vm.synced_folder "./.conf/nginx/sites-available/", "/etc/nginx/sites-available" , id: "nginx_conf"
+
+  #web document root
+  config.vm.synced_folder "./.conf/documents/", "/usr/share/nginx/docs" , id: "documents"
 
   #rSync example : remember to call ( vagrant rsync-auto ) to watch for file Chnages
   # config.vm.synced_folder "./contents/", "/usr/share/nginx/tst" , id: "tstServer" , type: "rsync",rsync__exclude: "./contents/node_modules/"
